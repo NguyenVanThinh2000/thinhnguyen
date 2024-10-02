@@ -1,0 +1,28 @@
+.itemWrapper {
+  flex: 1;
+  background-color: $white;
+  padding: 5px 10px;
+  min-width: 200px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid $sky-200;
+
+  .title {
+    text-transform: capitalize;
+  }
+
+  .buttonAddTask {
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    @include flex-center;
+    @include transition;
+
+    &:hover {
+      background-color: $sky-100;
+    }
+  }
+}

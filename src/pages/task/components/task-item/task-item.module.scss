@@ -1,0 +1,19 @@
+.taskItem {
+  padding: 5px;
+  background-color: $white;
+  border-radius: 5px;
+  min-height: 80px;
+  @include transition;
+
+  &:hover {
+    @include box-shadow;
+  }
+
+  &.isDragging {
+    opacity: 0.5;
+  }
+
+  .done {
+    text-decoration: line-through;
+  }
+}

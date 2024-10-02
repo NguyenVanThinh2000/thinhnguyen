@@ -2,7 +2,7 @@ import axios from 'axios'
 import queryString from 'query-string'
 
 const axiosInstance = axios.create({
-  baseURL: '/api',
+  baseURL: 'https://thinhnguyen-be.vercel.app/api',
   headers: {},
   paramsSerializer: (params) =>
     queryString.stringify(params, {

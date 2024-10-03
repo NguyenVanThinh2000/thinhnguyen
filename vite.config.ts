@@ -2,17 +2,22 @@ import react from '@vitejs/plugin-react-swc'
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 
-export default defineConfig(({ mode }) => {
+type ViteConfigInput = {
+  mode: string
+  command: string
+}
+
+export default ({ mode }: ViteConfigInput) => {
   const generateScopedName = mode === 'production' ? '[hash:base64:4]' : '[local]_[hash:base64:4]'
 
-  return {
+  return defineConfig({
     plugins: [react()],
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
       },
     },
-    envDir: './env',
+    envDir: './env/',
     css: {
       modules: {
         localsConvention: 'camelCase',
@@ -20,18 +25,13 @@ export default defineConfig(({ mode }) => {
       },
       preprocessorOptions: {
         scss: {
-          additionalData: `@use "./src/styles/abstracts" as *;`,
+          api: 'modern-compiler',
+          additionalData: `@use "@/styles/abstracts" as *;`,
         },
       },
     },
     server: {
       host: 'local.thinhnguyen.me',
-      proxy: {
-        '^/api|^/file': {
-          target: 'https://thinhnguyen-be.vercel.app',
-          changeOrigin: true,
-        },
-      },
     },
-  }
-})
+  })
+}

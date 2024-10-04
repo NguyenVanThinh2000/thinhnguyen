@@ -21,8 +21,8 @@ body {
   font-family: $font-base;
   font-size: $base-font-size;
   line-height: $base-line-height;
-  color: var(--text-color);
-  background-color: var(--body-color);
+  // color: var(--text-color);
+  // background-color: var(--body-color);
   -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
   -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
 }

@@ -3,4 +3,5 @@ export const path = {
   task: '/task',
   note: '/note',
   login: '/login',
+  guestManagement: '/guest-management',
 }

@@ -30,8 +30,5 @@ export default ({ mode }: ViteConfigInput) => {
         },
       },
     },
-    server: {
-      host: 'local.thinhnguyen.me',
-    },
   })
 }

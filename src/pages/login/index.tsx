@@ -34,7 +34,7 @@ const LoginSchema = z.object({
 })
 
 const Login = () => {
-  const navigator = useNavigate()
+  const navigate = useNavigate()
   const {
     state: { isAuth },
     actions: { login },
@@ -54,8 +54,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isAuth) {
-      console.log('isAuth', isAuth)
-      // navigator(path.task)
+      navigate(path.guestManagement)
     }
   }, [isAuth])
 
@@ -88,7 +87,7 @@ const Login = () => {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input type="password" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

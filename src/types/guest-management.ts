@@ -3,4 +3,6 @@ export type TGuestListData = {
   name: string
   nameInInvitation: string
   isAttending: boolean
+  host: string
+  role: string
 }

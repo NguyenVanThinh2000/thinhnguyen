@@ -64,7 +64,7 @@ export function DataTable({ columns, data }: Readonly<DataTableProps>) {
   })
   return (
     <div className="space-y-4 bg-background">
-      <DataTableToolbar isDisabledSearch debounceTime={700} table={table} />
+      <DataTableToolbar hideViewOption isDisabledSearch debounceTime={700} table={table} />
       <DataTableBase pagination={false} table={table} />
     </div>
   )

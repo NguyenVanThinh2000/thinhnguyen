@@ -40,6 +40,12 @@ export const columns: ColumnDef<TGuestListData>[] = [
     cell: (cell) => <div className="min-w-20">{cell.getValue() as string}</div>,
   },
   {
+    accessorKey: 'wishes',
+    id: 'wishes',
+    header: 'Wishes',
+    cell: (cell) => <div className="min-w-[200px]">{cell.getValue() as string}</div>,
+  },
+  {
     accessorKey: 'url',
     id: 'url',
     header: 'Link',

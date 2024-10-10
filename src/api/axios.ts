@@ -5,7 +5,10 @@ import { ENV } from '@/config'
 
 const axiosInstance = axios.create({
   baseURL: ENV.API_URL + '/api',
-  headers: {},
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+  },
   paramsSerializer: (params) =>
     queryString.stringify(params, {
       skipEmptyString: true,

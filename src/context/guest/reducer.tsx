@@ -79,6 +79,15 @@ export const userReducer = (state: TGuestState, action: TAction): TGuestState =>
         data: state.data.filter((guest) => guest.id !== action.payload.id),
       }
     }
+    case 'update_host_filter': {
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          host: action.payload,
+        },
+      }
+    }
 
     default: {
       throw new Error(`Unhandled action type: ${action}`)

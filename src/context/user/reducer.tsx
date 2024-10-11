@@ -42,13 +42,19 @@ export const userReducer = (state: TUserState, action: TAction): TUserState => {
         error: action.payload,
       }
     }
-    case 'login_fulfilled':
     case 'get_me_fulfilled': {
       return {
         ...state,
         isLoading: false,
         isAuth: true,
         me: action.payload,
+      }
+    }
+    case 'login_fulfilled': {
+      return {
+        ...state,
+        isLoading: false,
+        isAuth: true,
       }
     }
 

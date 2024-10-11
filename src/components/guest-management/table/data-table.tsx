@@ -19,6 +19,9 @@ import { DataTableToolbar } from '@/components/data-table/'
 import { DataTable as DataTableBase } from '@/components/data-table/data-table'
 import { TGuestListData } from '@/types'
 
+import AddGuest from '../add-guest'
+import GuestFilter from '../guest-filter'
+
 interface DataTableProps {
   columns: ColumnDef<TGuestListData>[]
   data: TGuestListData[]
@@ -64,7 +67,14 @@ export function DataTable({ columns, data }: Readonly<DataTableProps>) {
   })
   return (
     <div className="space-y-4 bg-background">
-      <DataTableToolbar hideViewOption isDisabledSearch debounceTime={700} table={table} />
+      <DataTableToolbar
+        hideViewOption
+        isDisabledSearch
+        debounceTime={700}
+        endActions={() => <AddGuest />}
+        table={table}
+        toolbarCustomActions={() => <GuestFilter />}
+      />
       <DataTableBase pagination={false} table={table} />
     </div>
   )

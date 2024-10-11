@@ -6,8 +6,6 @@ import { DataTableViewOptions } from '@/components/data-table'
 import { Input } from '@/components/ui/input'
 import useDebouncedState from '@/hooks/useDebouncedState'
 
-import AddGuest from '../guest-management/add-guest'
-
 interface DataTableToolbarProps<TData> {
   table: Table<TData>
   toolbarCustomActions?: ({ table }: { table: Table<TData> }) => ReactNode
@@ -43,8 +41,6 @@ export function DataTableToolbar<TData>({
 
         {!hideViewOption && <DataTableViewOptions table={table} />}
         {endActions?.({ table })}
-
-        <AddGuest />
       </div>
     </div>
   )

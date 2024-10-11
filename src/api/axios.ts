@@ -5,7 +5,6 @@ import { ENV } from '@/config'
 
 const axiosInstance = axios.create({
   baseURL: ENV.API_URL + '/api',
-  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -18,6 +17,10 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   function (config) {
+    const token = window.localStorage.getItem('jwt')
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`
+    }
     return config
   },
   function (error) {

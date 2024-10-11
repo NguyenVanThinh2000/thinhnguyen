@@ -1,11 +1,22 @@
-import { TAddGuestsRequest, TGuestResponse, TResponse, TUpdateGuestsRequest } from '@/types'
+import {
+  TAddGuestsRequest,
+  TGetGuestsParams,
+  TGuestResponse,
+  TResponse,
+  TUpdateGuestsRequest,
+} from '@/types'
 
 import axiosInstance from './axios'
 
 const userApiEndPoints = '/guests'
 
 export const guestApiEndPoints = {
-  getGuests: async () => axiosInstance.get<TResponse<TGuestResponse[]>>(userApiEndPoints),
+  getGuests: async (searchParams: TGetGuestsParams) => {
+    const { host } = searchParams
+    return axiosInstance.get<TResponse<TGuestResponse[]>>(userApiEndPoints, {
+      params: { host },
+    })
+  },
   addGuest: async (data: TAddGuestsRequest) =>
     axiosInstance.post<TResponse<TGuestResponse>>(userApiEndPoints, data),
   updateGuest: async (id: string, data: TUpdateGuestsRequest) =>

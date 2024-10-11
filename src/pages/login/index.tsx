@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
@@ -36,7 +35,6 @@ const LoginSchema = z.object({
 const Login = () => {
   const navigate = useNavigate()
   const {
-    state: { isAuth },
     actions: { login },
   } = useUserContext()
 
@@ -49,14 +47,12 @@ const Login = () => {
   })
 
   const handleSubmit = form.handleSubmit((data) => {
-    login(data)
+    login(data, {
+      onSuccess: () => {
+        navigate(path.guestManagement)
+      },
+    })
   })
-
-  useEffect(() => {
-    if (isAuth) {
-      navigate(path.guestManagement)
-    }
-  }, [isAuth])
 
   return (
     <div className={cn('flex min-h-screen items-center justify-center')}>

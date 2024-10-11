@@ -16,6 +16,9 @@ export type TGuestState = {
   isLoading: boolean
   error: string | null
   data: TGuestResponse[]
+  filter: {
+    host: THost[]
+  }
 }
 
 export type THost = 'thinh' | 'thoan'
@@ -67,4 +70,8 @@ export type TAction =
   | {
       type: 'delete_guest_rejected'
       payload: string | null
+    }
+  | {
+      type: 'update_host_filter'
+      payload: THost[]
     }

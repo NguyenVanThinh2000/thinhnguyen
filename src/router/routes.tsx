@@ -1,6 +1,5 @@
-import { createBrowserRouter, redirect } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
 
-import { UserApiEndPoints } from '@/api/user'
 import { MainLayout, PrivateLayout } from '@/layouts'
 import { GuestManagement, Login, Task } from '@/pages'
 
@@ -14,17 +13,6 @@ export const router = createBrowserRouter([
       {
         path: path.root,
         element: <PrivateLayout />,
-        loader: async () => {
-          try {
-            const {
-              data: { data },
-            } = await UserApiEndPoints.getMe()
-            if (data) return null
-            return redirect('/login')
-          } catch (error) {
-            return redirect('/login')
-          }
-        },
         children: [
           {
             path: path.task,

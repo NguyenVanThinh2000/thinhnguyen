@@ -4,4 +4,7 @@ export const initialGuestState: TGuestState = {
   isLoading: false,
   error: null,
   data: [],
+  filter: {
+    host: [],
+  },
 }

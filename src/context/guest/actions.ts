@@ -1,18 +1,18 @@
 import { AxiosError } from 'axios'
 
 import { guestApiEndPoints } from '@/api'
-import { TAddGuestsRequest, TUpdateGuestsRequest } from '@/types'
+import { TAddGuestsRequest, TGetGuestsParams, TUpdateGuestsRequest } from '@/types'
 
-import { TDispatch } from './type'
+import { TDispatch, THost } from './type'
 
 export const buildActions = (dispatch: TDispatch) => {
   return {
-    getGuests: async () => {
+    getGuests: async (params: TGetGuestsParams) => {
       dispatch({ type: 'get_guests_pending' })
 
       const {
         data: { data, error },
-      } = await guestApiEndPoints.getGuests()
+      } = await guestApiEndPoints.getGuests(params)
 
       if (!error) {
         dispatch({
@@ -125,6 +125,13 @@ export const buildActions = (dispatch: TDispatch) => {
         })
         onError?.(response?.statusText || 'Something went wrong')
       }
+    },
+
+    updateHostFilter: (hosts: THost[]) => {
+      dispatch({
+        type: 'update_host_filter',
+        payload: hosts,
+      })
     },
   }
 }

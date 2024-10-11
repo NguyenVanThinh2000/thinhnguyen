@@ -42,7 +42,6 @@ export type TAction =
     }
   | {
       type: 'login_fulfilled'
-      payload: TMe
     }
   | {
       type: 'login_rejected'

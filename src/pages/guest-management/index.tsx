@@ -7,13 +7,17 @@ import { useGuestContext } from '@/hooks/context/useGuestContext'
 
 const GuestManagement = () => {
   const {
-    state: { data },
+    state: {
+      data,
+      filter: { host },
+    },
     actions: { getGuests },
   } = useGuestContext()
 
   useEffect(() => {
-    getGuests()
-  }, [])
+    getGuests({ host })
+  }, [host])
+
   return (
     <div className="px-4">
       <PageTitle title="Guest Management" />

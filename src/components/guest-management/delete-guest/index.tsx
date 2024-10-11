@@ -34,7 +34,7 @@ const DeleteGuest = ({ id }: DeleteGuestProps) => {
           Are you sure you want to delete this guest? <br />
           This action cannot be undone.
         </p>
-        <DialogFooter>
+        <DialogFooter className="flex flex-row justify-end gap-2">
           <Button
             className="bg-zinc-300 hover:bg-zinc-400"
             variant="secondary"

@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, redirect } from 'react-router-dom'
 
 import { MainLayout, PrivateLayout } from '@/layouts'
 import { GuestManagement, Login, Task } from '@/pages'
@@ -14,6 +14,10 @@ export const router = createBrowserRouter([
         path: path.root,
         element: <PrivateLayout />,
         children: [
+          {
+            path: path.root,
+            loader: () => redirect(path.guestManagement)
+          },
           {
             path: path.task,
             element: <Task />,

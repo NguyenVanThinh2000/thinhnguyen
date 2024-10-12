@@ -49,7 +49,7 @@ export const columns: ColumnDef<TGuestListData>[] = [
     accessorKey: 'url',
     id: 'url',
     header: 'Link',
-    accessorFn: (originalRow) => `${ENV.INVITATION_URL}/${originalRow.host}?code=${originalRow.id}`,
+    accessorFn: (originalRow) => `${ENV.INVITATION_URL}/?code=${originalRow.id}`,
     cell: (cell) => <LinkCopy text={String(cell.getValue())} />,
   },
   {

@@ -65,6 +65,7 @@ export function DataTable({ columns, data }: Readonly<DataTableProps>) {
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
   })
+
   return (
     <div className="space-y-4 bg-background">
       <DataTableToolbar
@@ -73,7 +74,9 @@ export function DataTable({ columns, data }: Readonly<DataTableProps>) {
         debounceTime={700}
         endActions={() => <AddGuest />}
         table={table}
-        toolbarCustomActions={() => <GuestFilter />}
+        toolbarCustomActions={() => (
+          <GuestFilter columnFilters={columnFilters} setColumFilters={setColumnFilters} />
+        )}
       />
       <DataTableBase pagination={false} table={table} />
     </div>

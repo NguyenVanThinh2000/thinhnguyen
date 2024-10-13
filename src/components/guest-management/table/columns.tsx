@@ -55,7 +55,10 @@ export const columns: ColumnDef<TGuestListData>[] = [
   {
     id: 'actions',
     header: 'Actions',
-    accessorFn: (originalRow) => ({...originalRow}),
-    cell: (cell) => <TableActions guest={cell.getValue() as TGuestResponse} />,
+    accessorFn: (originalRow) => originalRow,
+    cell: (cell) => {
+      const cellValue = cell.getValue() as TGuestResponse
+      return <TableActions guest={cellValue} />
+    },
   },
 ]

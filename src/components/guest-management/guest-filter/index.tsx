@@ -2,8 +2,7 @@ import { Dispatch, SetStateAction } from 'react'
 
 import { ColumnFiltersState } from '@tanstack/react-table'
 
-import { ComboboxFilter } from '@/components/ui/combobox-filter'
-import { THost } from '@/context/guest'
+import { Combobox } from '@/components/ui/combobox'
 
 const hostList = ['thoan', 'thinh']
 
@@ -16,17 +15,27 @@ interface GuestFilterProps {
   setColumFilters: Dispatch<SetStateAction<ColumnFiltersState>>
 }
 const GuestFilter = ({ columnFilters, setColumFilters }: GuestFilterProps) => {
-  const handleUpdateHostFilter = (hosts: THost[]) => {
-    setColumFilters(hosts.map((item) => ({ id: 'host', value: item })))
+  const handleUpdateHostFilter = (host: string) => {
+    setColumFilters([{ id: 'host', value: host === 'all' ? '' : host }])
+  }
+
+  const getValue = () => {
+    const host = columnFilters.find((item) => item.id === 'host')?.value ?? ''
+    return (host === '' ? 'all' : host) as string
   }
 
   return (
     <>
-      <ComboboxFilter
-        options={hostListFilter}
-        selectedValues={columnFilters.map((item) => item.value as THost)}
-        setSelectValues={handleUpdateHostFilter}
-        title="Host"
+      <Combobox
+        options={[
+          ...hostListFilter,
+          {
+            label: 'All',
+            value: 'all',
+          },
+        ]}
+        value={getValue()}
+        onChange={(value) => handleUpdateHostFilter(value)}
       />
     </>
   )

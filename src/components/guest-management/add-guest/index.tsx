@@ -31,7 +31,7 @@ import { THost, TRole } from '@/context/guest'
 import { useGuestContext } from '@/hooks/context/useGuestContext'
 import { TAddGuestsRequest } from '@/types'
 
-const roleList = ['ông', 'bà', 'anh', 'chị', 'em', 'thầy', 'cô', 'bạn']
+export const roleList = ['ông', 'bà', 'thầy', 'cô', 'anh', 'chị', 'em', 'bạn', 'cháu']
 const hostList = ['thoan', 'thinh']
 
 const GuestSchema = z.object({

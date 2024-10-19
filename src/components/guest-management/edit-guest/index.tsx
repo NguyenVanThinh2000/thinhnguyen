@@ -28,12 +28,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+import { hostList, roleList } from '@/constants'
 import { THost, TRole } from '@/context/guest'
 import { useGuestContext } from '@/hooks/context/useGuestContext'
 import { TGuestResponse, TUpdateGuestsRequest } from '@/types'
-
-const roleList = ['ông', 'bà', 'anh', 'chị', 'em', 'thầy', 'cô', 'bạn']
-const hostList = ['thoan', 'thinh']
 
 const GuestSchema = z.object({
   name: z.string().min(1, {

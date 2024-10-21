@@ -17,14 +17,14 @@ import {
 
 import { DataTableToolbar } from '@/components/data-table/'
 import { DataTable as DataTableBase } from '@/components/data-table/data-table'
-import { TGuestListData } from '@/types'
+import { TGuestResponse } from '@/types'
 
 import AddGuest from '../add-guest'
 import GuestFilter from '../guest-filter'
 
 interface DataTableProps {
-  columns: ColumnDef<TGuestListData>[]
-  data: TGuestListData[]
+  columns: ColumnDef<TGuestResponse>[]
+  data: TGuestResponse[]
 }
 
 export function DataTable({ columns, data }: Readonly<DataTableProps>) {

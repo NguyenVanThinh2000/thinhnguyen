@@ -8,6 +8,7 @@ export type TGuestResponse = {
   wishes: string
   host: THost
   role: TRole
+  isSent: boolean
 }
 
 export type TAddGuestsRequest = {
@@ -26,15 +27,7 @@ export type TUpdateGuestsRequest = {
   wishes?: string
   host?: THost
   role?: TRole
-}
-
-export type TGuestListData = {
-  id: string
-  name: string
-  nameInInvitation: string
-  isAttending: boolean
-  host: string
-  role: string
+  isSent?: boolean
 }
 
 export type TGetGuestsParams = {

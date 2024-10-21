@@ -1,13 +1,14 @@
 import { ColumnDef } from '@tanstack/react-table'
 
 import { ENV } from '@/config'
-import { TGuestListData, TGuestResponse } from '@/types'
+import { TGuestResponse } from '@/types'
 
 import AttendStatus from '../attend-status'
 import LinkCopy from '../link-copy'
+import SentCheckbox from '../sent-checkbox'
 import TableActions from '../tabe-actions'
 
-export const columns: ColumnDef<TGuestListData>[] = [
+export const columns: ColumnDef<TGuestResponse>[] = [
   {
     accessorKey: 'stt',
     id: 'stt',
@@ -44,6 +45,13 @@ export const columns: ColumnDef<TGuestListData>[] = [
     id: 'wishes',
     header: 'Wishes',
     cell: (cell) => <div className="min-w-[200px]">{cell.getValue() as string}</div>,
+  },
+  {
+    accessorKey: 'check',
+    id: 'check',
+    header: 'Check',
+    accessorFn: (originalRow) => originalRow,
+    cell: (cell) => <SentCheckbox guest={cell.getValue() as TGuestResponse} />,
   },
   {
     accessorKey: 'url',

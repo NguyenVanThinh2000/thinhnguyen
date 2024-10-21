@@ -47,9 +47,9 @@ export const columns: ColumnDef<TGuestResponse>[] = [
     cell: (cell) => <div className="min-w-[200px]">{cell.getValue() as string}</div>,
   },
   {
-    accessorKey: 'check',
-    id: 'check',
-    header: 'Check',
+    accessorKey: 'sent',
+    id: 'sent',
+    header: 'Sent',
     accessorFn: (originalRow) => originalRow,
     cell: (cell) => <SentCheckbox guest={cell.getValue() as TGuestResponse} />,
   },

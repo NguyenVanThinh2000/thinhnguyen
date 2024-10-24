@@ -4,11 +4,12 @@ export type TGuestResponse = {
   id: string
   name: string
   nameInInvitation: string
-  isAttending: boolean
+  isAttending: boolean | null
   wishes: string
   host: THost
   role: TRole
   isSent: boolean
+  gift: string | null
 }
 
 export type TAddGuestsRequest = {
@@ -28,6 +29,7 @@ export type TUpdateGuestsRequest = {
   host?: THost
   role?: TRole
   isSent?: boolean
+  gift?: string | null
 }
 
 export type TGetGuestsParams = {

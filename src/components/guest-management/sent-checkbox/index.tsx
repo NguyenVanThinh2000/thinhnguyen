@@ -12,7 +12,6 @@ const SentCheckbox = ({ guest }: { guest: TGuestResponse }) => {
   } = useGuestContext()
 
   const [isChecked, setIsChecked] = useState<CheckedState>(guest.isSent ?? false)
-  console.log(guest.isSent)
 
   const handleOnChange = (checked: CheckedState) => {
     setIsChecked(checked)

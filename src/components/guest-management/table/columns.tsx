@@ -3,6 +3,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import { ENV } from '@/config'
 import { TGuestResponse } from '@/types'
 
+import GiftBox from '../GiftBox'
 import AttendStatus from '../attend-status'
 import LinkCopy from '../link-copy'
 import SentCheckbox from '../sent-checkbox'
@@ -44,7 +45,17 @@ export const columns: ColumnDef<TGuestResponse>[] = [
     accessorKey: 'wishes',
     id: 'wishes',
     header: 'Wishes',
-    cell: (cell) => <div className="min-w-[200px]">{cell.getValue() as string}</div>,
+    cell: (cell) => <div className="min-w-[300px]">{cell.getValue() as string}</div>,
+  },
+  {
+    accessorKey: 'gift',
+    id: 'gift',
+    header: 'Gift',
+    accessorFn: (originalRow) => originalRow,
+    cell: (cell) => {
+      const cellValue = cell.getValue() as TGuestResponse
+      return <GiftBox id={cellValue.id} value={cellValue.gift} />
+    },
   },
   {
     accessorKey: 'sent',

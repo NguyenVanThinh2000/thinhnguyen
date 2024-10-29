@@ -6,6 +6,8 @@ import { DataTableViewOptions } from '@/components/data-table'
 import { Input } from '@/components/ui/input'
 import useDebouncedState from '@/hooks/useDebouncedState'
 
+import ExportData from '../guest-management/export-data'
+
 interface DataTableToolbarProps<TData> {
   table: Table<TData>
   toolbarCustomActions?: ({ table }: { table: Table<TData> }) => ReactNode
@@ -32,6 +34,7 @@ export function DataTableToolbar<TData>({
     <div className="mb-2 flex-wrap justify-between gap-4 flex-center-y">
       {toolbarCustomActions?.({ table }) ?? null}
       <div className="ml-auto gap-2 flex-center-y">
+        <ExportData />
         <Input
           className="w-[150px] lg:w-[250px]"
           defaultValue={searchValue}

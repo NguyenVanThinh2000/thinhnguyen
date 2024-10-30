@@ -17,7 +17,7 @@ import {
 
 import { DataTableToolbar } from '@/components/data-table/'
 import { DataTable as DataTableBase } from '@/components/data-table/data-table'
-import { TGuestResponse } from '@/types'
+import { TGuestResponse, TLocation } from '@/types'
 
 import AddGuest from '../add-guest'
 import GuestFilter from '../guest-filter'
@@ -25,9 +25,10 @@ import GuestFilter from '../guest-filter'
 interface DataTableProps {
   columns: ColumnDef<TGuestResponse>[]
   data: TGuestResponse[]
+  location?: TLocation
 }
 
-export function DataTable({ columns, data }: Readonly<DataTableProps>) {
+export function DataTable({ columns, data, location }: Readonly<DataTableProps>) {
   const [globalFilter, setGlobalFilter] = React.useState<string>('')
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -72,7 +73,7 @@ export function DataTable({ columns, data }: Readonly<DataTableProps>) {
         hideViewOption
         isDisabledSearch
         debounceTime={700}
-        endActions={() => <AddGuest />}
+        endActions={() => <AddGuest location={location} />}
         table={table}
         toolbarCustomActions={() => (
           <GuestFilter columnFilters={columnFilters} setColumFilters={setColumnFilters} />

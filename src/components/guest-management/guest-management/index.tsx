@@ -4,8 +4,16 @@ import { PageTitle } from '@/components'
 import { columns } from '@/components/guest-management/table/columns'
 import { DataTable } from '@/components/guest-management/table/data-table'
 import { useGuestContext } from '@/hooks/context/useGuestContext'
+import { TLocation } from '@/types'
 
-const GuestManagement = () => {
+interface GuestManagementProps {
+  location?: TLocation
+}
+
+const titleMapping = {
+  saigon: 'Guest Management - Saigon',
+}
+const GuestManagement = ({ location }: GuestManagementProps) => {
   const {
     state: {
       data,
@@ -15,13 +23,13 @@ const GuestManagement = () => {
   } = useGuestContext()
 
   useEffect(() => {
-    getGuests({ host })
+    getGuests({ host, location })
   }, [host])
 
   return (
     <div className="px-4">
-      <PageTitle title="Guest Management" />
-      <DataTable columns={columns} data={data} />
+      <PageTitle title={location ? titleMapping[location] : 'Guest Management'} />
+      <DataTable columns={columns} data={data} location={location} />
     </div>
   )
 }

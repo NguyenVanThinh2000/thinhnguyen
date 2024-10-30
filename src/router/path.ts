@@ -4,4 +4,5 @@ export const path = {
   note: '/note',
   login: '/login',
   guestManagement: '/guest-management',
+  guestManagementSG: '/guest-management-sg',
 }

@@ -13,6 +13,12 @@ export const sidebarMenu: TSidebarMenu[] = [
   },
   {
     id: generateUUID(),
+    title: 'Guest Management SG',
+    icon: <BookUser size={20} />,
+    path: path.guestManagementSG,
+  },
+  {
+    id: generateUUID(),
     title: 'Task',
     icon: <ListTodo size={20} />,
     path: path.task,

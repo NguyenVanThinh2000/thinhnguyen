@@ -12,9 +12,8 @@ const userApiEndPoints = '/guests'
 
 export const guestApiEndPoints = {
   getGuests: async (searchParams: TGetGuestsParams) => {
-    const { host } = searchParams
     return axiosInstance.get<TResponse<TGuestResponse[]>>(userApiEndPoints, {
-      params: { host },
+      params: searchParams,
     })
   },
   addGuest: async (data: TAddGuestsRequest) =>

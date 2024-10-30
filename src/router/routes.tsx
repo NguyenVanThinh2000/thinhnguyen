@@ -1,7 +1,7 @@
 import { createBrowserRouter, redirect } from 'react-router-dom'
 
 import { MainLayout, PrivateLayout } from '@/layouts'
-import { GuestManagement, Login, Task } from '@/pages'
+import { GuestManagementPage, GuestManagementSGPage, Login, Task } from '@/pages'
 
 import { path } from './path'
 
@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: path.root,
-            loader: () => redirect(path.guestManagement)
+            loader: () => redirect(path.guestManagement),
           },
           {
             path: path.task,
@@ -24,7 +24,11 @@ export const router = createBrowserRouter([
           },
           {
             path: path.guestManagement,
-            element: <GuestManagement />,
+            element: <GuestManagementPage />,
+          },
+          {
+            path: path.guestManagementSG,
+            element: <GuestManagementSGPage />,
           },
         ],
       },

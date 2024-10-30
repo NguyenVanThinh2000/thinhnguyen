@@ -10,6 +10,7 @@ export type TGuestResponse = {
   role: TRole
   isSent: boolean
   gift: string | null
+  location?: TLocation
 }
 
 export type TAddGuestsRequest = {
@@ -19,6 +20,7 @@ export type TAddGuestsRequest = {
   wishes: string
   host: THost
   role: TRole
+  location?: TLocation
 }
 
 export type TUpdateGuestsRequest = {
@@ -30,8 +32,12 @@ export type TUpdateGuestsRequest = {
   role?: TRole
   isSent?: boolean
   gift?: string | null
+  location?: TLocation
 }
 
 export type TGetGuestsParams = {
   host: THost[]
+  location?: TLocation
 }
+
+export type TLocation = 'saigon'

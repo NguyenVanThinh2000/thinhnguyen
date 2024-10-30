@@ -30,7 +30,7 @@ import {
 import { hostList, roleList } from '@/constants'
 import { THost, TRole } from '@/context/guest'
 import { useGuestContext } from '@/hooks/context/useGuestContext'
-import { TAddGuestsRequest } from '@/types'
+import { TAddGuestsRequest, TLocation } from '@/types'
 
 const GuestSchema = z.object({
   name: z.string().min(1, {
@@ -68,7 +68,10 @@ const defaultValues: GuestSchemaType = {
   role: 'bạn',
 }
 
-const AddGuest = () => {
+interface AddGuestProps {
+  location?: TLocation
+}
+const AddGuest = ({ location }: AddGuestProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const {
     state: { isLoading },
@@ -84,6 +87,7 @@ const AddGuest = () => {
       ...data,
       isAttending: null,
       wishes: '',
+      location,
     }
     addGuest(postData, {
       onSuccess: () => {

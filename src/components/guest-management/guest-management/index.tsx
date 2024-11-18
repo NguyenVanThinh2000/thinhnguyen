@@ -17,6 +17,7 @@ const GuestManagement = ({ location }: GuestManagementProps) => {
   const {
     state: {
       data,
+      isLoading: isFetching,
       filter: { host },
     },
     actions: { getGuests },
@@ -29,7 +30,7 @@ const GuestManagement = ({ location }: GuestManagementProps) => {
   return (
     <div className="px-4">
       <PageTitle title={location ? titleMapping[location] : 'Guest Management'} />
-      <DataTable columns={columns} data={data} location={location} />
+      {!isFetching && <DataTable columns={columns} data={data} location={location} />}
     </div>
   )
 }

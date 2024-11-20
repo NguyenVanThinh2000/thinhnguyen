@@ -26,10 +26,23 @@ export const GuestProvider = ({ children }: TGuestProviderProps) => {
 export const userReducer = (state: TGuestState, action: TAction): TGuestState => {
   switch (action.type) {
     // get me
+    case 'get_guests_pending': {
+      return {
+        ...state,
+        isLoadingGetGuests: true,
+        error: null,
+      }
+    }
+    case 'get_guests_rejected': {
+      return {
+        ...state,
+        isLoadingGetGuests: false,
+        error: action.payload,
+      }
+    }
     case 'add_guest_pending':
     case 'update_guest_pending':
-    case 'delete_guest_pending':
-    case 'get_guests_pending': {
+    case 'delete_guest_pending': {
       return {
         ...state,
         isLoading: true,
@@ -38,8 +51,7 @@ export const userReducer = (state: TGuestState, action: TAction): TGuestState =>
     }
     case 'add_guest_rejected':
     case 'update_guest_rejected':
-    case 'delete_guest_rejected':
-    case 'get_guests_rejected': {
+    case 'delete_guest_rejected': {
       return {
         ...state,
         isLoading: false,
@@ -49,7 +61,7 @@ export const userReducer = (state: TGuestState, action: TAction): TGuestState =>
     case 'get_guests_fulfilled': {
       return {
         ...state,
-        isLoading: false,
+        isLoadingGetGuests: false,
         data: action.payload,
       }
     }

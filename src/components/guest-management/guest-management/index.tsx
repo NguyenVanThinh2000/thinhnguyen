@@ -17,7 +17,7 @@ const GuestManagement = ({ location }: GuestManagementProps) => {
   const {
     state: {
       data,
-      isLoading: isFetching,
+      isLoadingGetGuests: isFetching,
       filter: { host },
     },
     actions: { getGuests },

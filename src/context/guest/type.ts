@@ -14,6 +14,7 @@ export type TDispatch = (action: TAction) => void
 
 export type TGuestState = {
   isLoading: boolean
+  isLoadingGetGuests: boolean
   error: string | null
   data: TGuestResponse[]
   filter: {

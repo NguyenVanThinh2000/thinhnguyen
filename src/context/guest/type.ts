@@ -23,7 +23,7 @@ export type TGuestState = {
 }
 
 export type THost = 'thinh' | 'thoan'
-export type TRole = 'ông' | 'bà' | 'thầy' | 'cô' | 'anh' | 'chị' | 'em' | 'bạn' | 'cháu'
+export type TRole = 'ông' | 'bà' | 'thầy' | 'cô' | 'anh' | 'chị' | 'em' | 'bạn' | 'cháu' | 'anh/chị'
 export type TGuestProviderProps = { children: React.ReactNode }
 
 export type TAction =
